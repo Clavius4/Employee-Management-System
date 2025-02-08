@@ -1,6 +1,7 @@
 // BusinessLogic/EmployeeService.cs
 using EmployeeManagementSystem.DataAccess;
 using EmployeeManagementSystem.Models;
+using EmployeeManagementSystem.Services;
 using System.Collections.Generic;
 
 namespace EmployeeManagementSystem.BusinessLogic
