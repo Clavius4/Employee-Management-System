@@ -40,16 +40,16 @@ namespace EmployeeManagementSystem.Services
 
         public void UpdateEmployee(int id, string name, string position, string department)
         {
-            
-            var employee = _dbContext.Employees.Where(x => x.Id == id).FirstOrDefault();
-            if (employee != null)
-            {
-                employee.Name = name;
-                employee.Position = position;
-                employee.Department = department;
-                _dbContext.Employees.Update(employee);
-                _dbContext.SaveChanges();
-            }
+
+            var employee = _dbContext.Employees.ToList().Where(x => x.Id == id);
+            //if (employee != null)
+            //{
+            //    employee.Name = name;
+            //    employee.Position = position;
+            //    employee.Department = department;
+            //    _dbContext.Employees.Update(employee);
+            //    _dbContext.SaveChanges();
+            //}
         }
 
         public void DeleteEmployee(int id)
