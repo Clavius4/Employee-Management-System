@@ -1,5 +1,5 @@
 ﻿// Program.cs
-using EmployeeManagementSystem.BusinessLogic;
+using EmployeeManagementSystem.Logic;
 using EmployeeManagementSystem.UI;
 using System;
 
@@ -9,8 +9,9 @@ namespace EmployeeManagementSystem
     {
         static void Main(string[] args)
         {
-            var employeeService = new EmployeeService();
-            var employeeForm = new EmployeeForm(employeeService);
+            //The main program is what consumes the repository
+            var employeesRepository = new EmployeesRepository();
+            var employeeForm = new EmployeeForm(employeesRepository);
 
             while (true)
             {

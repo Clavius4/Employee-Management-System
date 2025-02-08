@@ -1,4 +1,5 @@
 // UI/EmployeeForm.cs
+using EmployeeManagementSystem.Logic;
 using EmployeeManagementSystem.Models;
 using EmployeeManagementSystem.Services;
 using System;
@@ -8,11 +9,11 @@ namespace EmployeeManagementSystem.UI
 {
     public class EmployeeForm
     {
-        private readonly IEmployeeService _employeeService;
+        private readonly IEmployeesRepository _employeesRepository;
 
-        public EmployeeForm(IEmployeeService employeeService)
+        public EmployeeForm(IEmployeesRepository employeesRepository)
         {
-            _employeeService = employeeService;
+            _employeesRepository = employeesRepository;
         }
 
         public void ShowMenu()
@@ -36,13 +37,13 @@ namespace EmployeeManagementSystem.UI
             Console.Write("Enter Department: ");
             var department = Console.ReadLine();
 
-            _employeeService.AddEmployee(name, position, department);
+            _employeesRepository.AddEmployee(name, position, department);
             Console.WriteLine("Employee Added Successfully!");
         }
 
         public void ViewEmployees()
         {
-            var employees = _employeeService.GetAllEmployees();
+            var employees = _employeesRepository.GetAllEmployees();
             if (employees.Any())
             {
                 foreach (var employee in employees)
@@ -68,7 +69,7 @@ namespace EmployeeManagementSystem.UI
             Console.Write("Enter new Department: ");
             var department = Console.ReadLine();
 
-            _employeeService.UpdateEmployee(id, name, position, department);
+            _employeesRepository.UpdateEmployee(id, name, position, department);
             Console.WriteLine("Employee Updated Successfully!");
         }
 
@@ -77,7 +78,7 @@ namespace EmployeeManagementSystem.UI
             Console.Write("Enter Employee ID to delete: ");
             var id = int.Parse(Console.ReadLine());
 
-            _employeeService.DeleteEmployee(id);
+            _employeesRepository.DeleteEmployee(id);
             Console.WriteLine("Employee Deleted Successfully!");
         }
     }
