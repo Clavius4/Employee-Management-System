@@ -30,6 +30,7 @@ namespace EmployeeManagementSystem.Services
                 Department = department
             };
             _dbContext.Employees.Add(employee);
+            _dbContext.SaveChanges();
         }
 
         public List<Employee> GetAllEmployees()
@@ -47,6 +48,7 @@ namespace EmployeeManagementSystem.Services
                 employee.Position = position;
                 employee.Department = department;
                 _dbContext.Employees.Update(employee);
+                _dbContext.SaveChanges();
             }
         }
 
@@ -55,6 +57,7 @@ namespace EmployeeManagementSystem.Services
             var employee = _dbContext.Employees.Where(x => x.Id == id).FirstOrDefault();
             if (employee is not null)
             _dbContext.Employees.Remove(employee);
+            _dbContext.SaveChanges();
         }
 
     }
